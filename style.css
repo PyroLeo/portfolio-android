@@ -10,7 +10,6 @@ html, body {
     height: 100%;
 }
 
-/* Enabled state */
 html.is-scrollable, 
 body.is-scrollable {
     overflow-y: auto !important;
@@ -19,7 +18,6 @@ body.is-scrollable {
     scroll-behavior: smooth;
 }
 
-/* Color Variables */
 :root {
     --blue-bg: #002f7b;
     --green-bg: #afeb8f;
@@ -72,7 +70,6 @@ body.is-scrollable {
     justify-content: flex-end;
 }
 
-/* Header Box Component */
 .header-box {
     border: 3px solid transparent;
     padding: 24px;
@@ -82,6 +79,18 @@ body.is-scrollable {
     width: 100%;
     max-width: 550px;
     box-sizing: border-box;
+}
+
+.header-box-name {
+    border: 3px solid transparent;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 550px;
+    box-sizing: border-box;
+    margin-left: 100px;
 }
 
 .border-blue { border-color: var(--blue-bg); }
@@ -145,7 +154,6 @@ body.is-scrollable {
     font-size: clamp(28px, 4vw, 42px);
 }
 
-/* Grid Layouts */
 .grid-two-col {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -164,7 +172,6 @@ body.is-scrollable {
     align-self: center;
 }
 
-/* Skills Layout */
 .skills-container {
     display: flex;
     flex-direction: column;
@@ -178,7 +185,14 @@ body.is-scrollable {
     margin-bottom: 8px;
 }
 
-/* Image Containers & Responsive Cropping */
+.ratingindiv {
+    width: 100%;
+    max-height: 300px;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-left: 50px;
+}
+
 .img-container {
     width: 100%;
     max-height: 300px;
@@ -193,7 +207,6 @@ body.is-scrollable {
     object-position: center;
 }
 
-/* Progress Bars */
 progress {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -202,22 +215,19 @@ progress {
   height: 12px;
   border: none;
   border-radius: 10px;
-  background-color: #fff; /* Fallback */
-  overflow: hidden;       /* 1. Clips internal fill to the 10px rounded corners */
+  background-color: #fff;
+  overflow: hidden;     
 }
 
-/* 2. Chrome, Safari, Edge Unfilled Track */
 progress::-webkit-progress-bar {
   background-color: #fff !important;
   border-radius: 10px;
 }
 
-/* 3. Firefox Unfilled Track */
 progress::-moz-progress-bar {
   border-radius: 10px;
 }
 
-/* 4. Filled Bar Portion (Green) */
 progress::-webkit-progress-value {
   background-color: #2ecc71;
   border-radius: 10px; /* Keeps rounded ends as it fills */
@@ -230,14 +240,12 @@ progress::-moz-progress-bar {
     transition: width 1.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* Text Colors & Helper Classes */
 .text-white { color: #fff; }
 .text-blue { color: var(--blue-bg); }
 .text-green { color: var(--green-bg); }
 .text-bold { font-weight: bold; }
 .text-center { text-align: center; }
 
-/* Buttons */
 .action-btn {
     color: #fff;
     border: none;
@@ -271,7 +279,6 @@ progress::-moz-progress-bar {
     transform: translateY(-2px);
 }
 
-/* Landing Button */
 .btn {
     background: var(--blue-bg);
     position: relative;
@@ -321,7 +328,6 @@ progress::-moz-progress-bar {
     height: 100%;
 }
 
-/* Social Icon Links */
 .social-links {
     display: flex;
     gap: 15px;
@@ -347,10 +353,144 @@ a:hover {
     color: var(--green-bg);
 }
 
-/* ==========================================================
-   MOBILE RESPONSIVE BREAKPOINT (<768px)
-========================================================== */
+/* ==========================================
+   RATING SYSTEM - FIXED CSS
+   ========================================== */
+.rating-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    overflow: visible;
+}
+
+.rating {
+    --default: #8A91B4;
+    --active: #FDCF10;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.rating li {
+    --star-before-r: 0deg;
+    --star-before-y: 0px;
+    --star-after-r: 0deg;
+    --star-after-y: 0px;
+    --star-o: 1;
+    --star-blur: 0px;
+    --star-scale: 0;
+    --dot-scale: .8;
+    padding: 0 4px;
+}
+
+/* Hover Effects */
+.rating li:hover,
+.rating li:hover ~ li {
+    --color: var(--active);
+    --dot-scale: 1;
+}
+
+.rating li.active {
+    --star-scale: 1;
+    --dot-duration: 0s;
+}
+
+.rating li.activeColor {
+    --color: var(--active);
+}
+
+.rating li button {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    display: block;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    transform: scale(var(--scale, 1));
+    transition: transform .2s;
+}
+
+.rating li button:active {
+    --scale: .8;
+}
+
+/* Central Dot Indicator */
+.rating li button:before {
+    content: '';
+    display: block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    background: var(--color, var(--default));
+    transform: scale(var(--dot-scale, .8)) translateZ(0);
+    transition: background .25s, transform var(--dot-duration, .25s);
+}
+
+/* Star Graphic Wrapper */
+.rating li button .star {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    opacity: var(--star-o, 1);
+    filter: blur(var(--star-blur, 0px));
+    transform: translateY(var(--star-y, 0px)) scale(var(--star-scale, 0)) translateZ(0);
+    will-change: transform, opacity, filter;
+}
+
+/* Star Halves (Clip-path Polygons) */
+.rating li button .star:before,
+.rating li button .star:after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: var(--color, var(--active)); /* Fallback to active color when animated */
+    transition: background .25s;
+    will-change: transform;
+}
+
+/* Left Half of Star */
+.rating li button .star:before {
+    transform: translateY(var(--star-before-y, 0px)) rotate(var(--star-before-r, 0deg)) translateZ(0);
+    -webkit-clip-path: polygon(50% 5%, 65% 35%, 30% 60%, 2.5% 40%, 35% 35%);
+    clip-path: polygon(50% 5%, 65% 35%, 30% 60%, 2.5% 40%, 35% 35%);
+}
+
+/* Right Half of Star */
+.rating li button .star:after {
+    transform: translateY(var(--star-after-y, 0px)) rotate(var(--star-after-r, 0deg)) translateZ(0);
+    -webkit-clip-path: polygon(65% 35%, 97.5% 40%, 70% 60%, 80% 95%, 50% 74%, 20% 95%, 30% 60%);
+    clip-path: polygon(65% 35%, 97.5% 40%, 70% 60%, 80% 95%, 50% 74%, 20% 95%, 30% 60%);
+}
+
+html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+
 @media (max-width: 768px) {
+    .ratingindiv {
+        display: flex;
+        justify-content: center;
+        margin-left: 0px;
+    }
+
     .section-padding, .section-intro {
         padding: 40px 5vw;
     }
@@ -366,6 +506,11 @@ a:hover {
 
     .header-box {
         max-width: 100%;
+    }
+
+    .header-box-name {
+        text-align: center;
+        margin-left: 0px;
     }
 
     .btn {

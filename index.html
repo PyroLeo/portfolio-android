@@ -4,6 +4,8 @@
         <title>Youssef Hussein | Portfolio</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
         <script src="script.js" defer></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +14,6 @@
     </head>
     <body>
         
-        <!-- Hero Section -->
         <div class="whitebg section-hero">
             <div class="box">
                 <button class="btn" id="toggle-scroll-btn" onclick="this.disabled=true">
@@ -22,26 +23,60 @@
             </div>
         </div>
 
-        <!-- Next Section: Intro -->
         <section id="next-section">
             <div class="bluebg section-intro">
-                <div class="header-box border-blue">
-                    <h1 class="animation" style="color: var(--green-bg);">Youssef Hussein</h1>
-                    <h2 class="badge-title">Frontend Web Dev</h2>
+                <div class="project-grid">
+                    <div class="header-box-name border-blue">
+                        <h1 style="color: var(--green-bg); justify-content: center;">Youssef Hussein</h1>
+                        <h2 class="badge-title">Frontend Web Dev</h2>
+                    </div>
+                    <div class="ratingindiv">
+                        <ul class="rating">
+                            <li>
+                                <button>
+                                    <div class="star"></div>
+                                </button>
+                            </li>
+                            <li>
+                                <button>
+                                    <div class="star"></div>
+                                </button>
+                            </li>
+                            <li>
+                                <button>
+                                    <div class="star"></div>
+                                </button>
+                            </li>
+                            <li>
+                                <button>
+                                    <div class="star"></div>
+                                </button>
+                            </li>
+                            <li>
+                                <button>
+                                    <div class="star"></div>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>             
                 </div>
             </div>
 
             <div class="greenbg section-intro flex-end">
-                <div class="header-box border-green">
-                    <p class="tag-label">ABOUT ME</p>
-                    <h3 class="about-text">Currently designing websites yet an aspiring game developer</h3>
+                <div class="project-grid">
+                    <div class="img-container">
+                        <img src="imgs/keyboard.png" alt="placeholder">
+                    </div>                
+                    <div class="header-box border-green">
+                        <h2 class="about-text animation">ABOUT ME</h2>
+                        <h3 class="tag-label">Frontend web developer from Egypt. Learning game development to create small indie games</h3>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Education & Experience -->
         <div class="whitebg section-padding">
-            <h1 class="section-title">Education & Experience</h1>
+            <h1 class="section-title animation">Education & Experience</h1>
             <div class="grid-two-col">
                 <div class="header-box card-dark">
                     <p class="text-white">2026</p>
@@ -56,31 +91,30 @@
             </div>
         </div>
 
-        <!-- Skills Section -->
         <div class="bluebg section-padding text-white">
             <p class="tag-label">WHAT I CAN DO</p>
-            <h1 class="main-heading">Skills & <br> Proficiencies</h1>
+            <h1 class="main-heading animation">Skills & Proficiencies</h1> 
+            <br>
             <div class="skills-container">
                 <div class="skill-item">
-                    <p>Problem Solving</p>
+                    <p>HTML</p>
                     <progress class="animated-progress" max="100" value="0" data-target="90"></progress>
                 </div>
                 <div class="skill-item">
-                    <p>Office Suite</p>
+                    <p>CSS</p>
                     <progress class="animated-progress" max="100" value="0" data-target="85"></progress>
                 </div>
                 <div class="skill-item">
-                    <p>Android Development</p>
-                    <progress class="animated-progress" max="100" value="0" data-target="70"></progress>
+                    <p>JavaScript</p>
+                    <progress class="animated-progress" max="100" value="0" data-target="80"></progress>
                 </div>
                 <div class="skill-item">
-                    <p>Programming Skills</p>
-                    <progress class="animated-progress" max="100" value="0" data-target="65"></progress>
+                    <p>React</p>
+                    <progress class="animated-progress" max="100" value="0" data-target="70"></progress>
                 </div>
             </div>
         </div>
 
-        <!-- Project 1: Solar System -->
         <div class="greenbg section-padding">
             <div class="project-grid">
                 <div class="header-box card-white">
@@ -97,7 +131,6 @@
             </div>
         </div>
 
-        <!-- Project 2: Platformer Game -->
         <div class="whitebg section-padding">
             <div class="project-grid">
                 <div class="header-box card-green">
@@ -108,13 +141,12 @@
                     <p class="text-center">2026</p>
                 </div>
                 <div class="header-box align-self-center">
-                    <h4 class="text-blue">This is a platformer game I made using Godot game engine. I got the help from a YouTube video by Brackeys.</h4>
-                    <button class="action-btn" onclick="window.open('', '_blank')">Click for the Github repository</button>
+                    <h4 class="text-blue">This is a platformer game I am making using Godot game engine. I am getting the help from a YouTube video by "Brackeys".</h4>
+                    <button class="action-btn" onclick="window.open('', '_blank')" disabled="true">Github repository under construction</button>
                 </div>
             </div>
         </div>
 
-        <!-- Project 3: React Capacitor -->
         <div class="greenbg section-padding">
             <div class="project-grid">
                 <div class="header-box card-white">
@@ -131,7 +163,6 @@
             </div>
         </div>
 
-        <!-- Reach Out / Footer -->
         <div class="bluebg section-padding text-white">
             <h1 class="animation main-heading">Reach out!</h1>
             <div class="grid-two-col contact-grid">
@@ -142,16 +173,17 @@
                     <a href="https://github.com/PyroLeo" target="_blank">https://github.com/PyroLeo</a>
                 </div>
                 <div class="header-box border-transparent">
-                    <h4>Connect with me</h4>
+                    <h4 class="animation">Connect with me</h4>
                     <div class="social-links">
                         <a href="https://www.instagram.com/invisible_indigo" target="_blank"><i class="fi fi-brands-instagram"></i></a>
                         <a href="https://m.facebook.com/youssef.mohamed.ali.463/" target="_blank"><i class="fi fi-brands-facebook"></i></a>
                         <a href="https://www.linkedin.com/in/youssef-hussein-ab4101237" target="_blank"><i class="fi fi-brands-linkedin"></i></a>
                     </div>
-                    <button class="resume-btn">Find my resume here</button>
+                    <a href="https://drive.google.com/file/d/1XnVOmVLLjic7LcHvWTIyhgTu0RN6jxoC/view?usp=sharing" target="_blank">
+                        <button class="resume-btn">Find my resume here</button>
+                    </a>
                 </div>
             </div>
         </div>
-
     </body>
 </html>
