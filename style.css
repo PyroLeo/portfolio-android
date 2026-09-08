@@ -1,0 +1,378 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Syne', sans-serif;
+}
+
+html, body {
+    overflow: hidden;
+    height: 100%;
+}
+
+/* Enabled state */
+html.is-scrollable, 
+body.is-scrollable {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    height: auto !important;
+    scroll-behavior: smooth;
+}
+
+/* Color Variables */
+:root {
+    --blue-bg: #002f7b;
+    --green-bg: #afeb8f;
+    --white-bg: #ffffff;
+}
+
+/* Common Background Sections */
+.bluebg {
+    background-color: var(--blue-bg);
+    min-height: 100vh;
+}
+.greenbg {
+    background-color: var(--green-bg);
+    min-height: 100vh;
+}
+.whitebg {
+    background-color: var(--white-bg);
+    min-height: 100vh;
+}
+
+.section-padding {
+    padding: 60px 8vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.section-hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-hero.is-hidden {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+.section-intro {
+    padding: 60px 8vw;
+    display: flex;
+    align-items: center;
+}
+
+.flex-end {
+    justify-content: flex-end;
+}
+
+/* Header Box Component */
+.header-box {
+    border: 3px solid transparent;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 550px;
+    box-sizing: border-box;
+}
+
+.border-blue { border-color: var(--blue-bg); }
+.border-green { border-color: var(--green-bg); }
+.border-transparent { border-color: transparent; }
+
+.badge-title {
+    margin: 0;
+    background-color: #fff;
+    color: var(--blue-bg);
+    border-radius: 15px;
+    padding: 6px 16px;
+    text-align: center;
+    width: fit-content;
+}
+
+.tag-label {
+    color: var(--blue-bg);
+    font-weight: bold;
+}
+
+.about-text {
+    font-size: clamp(24px, 4vw, 40px);
+    color: var(--blue-bg);
+    line-height: 1.2;
+}
+
+.main-heading {
+    font-size: clamp(36px, 6vw, 60px);
+    margin-bottom: 24px;
+}
+
+/* Dark Card Component */
+.card-dark {
+    border-radius: 15px;
+    background-color: var(--blue-bg);
+    color: #fff;
+}
+
+.card-white {
+    border-radius: 15px;
+    background-color: #fff;
+    color: var(--blue-bg);
+}
+
+.card-green {
+    border-radius: 15px;
+    background-color: var(--green-bg);
+    color: var(--blue-bg);
+}
+
+.card-blue {
+    border-radius: 15px;
+    background-color: var(--blue-bg);
+    color: var(--green-bg);
+}
+
+.section-title {
+    color: var(--blue-bg);
+    margin-bottom: 30px;
+    font-size: clamp(28px, 4vw, 42px);
+}
+
+/* Grid Layouts */
+.grid-two-col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    width: 100%;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.align-self-center {
+    align-self: center;
+}
+
+/* Skills Layout */
+.skills-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+    margin-top: 20px;
+}
+
+.skill-item p {
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+/* Image Containers & Responsive Cropping */
+.img-container {
+    width: 100%;
+    max-height: 300px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Progress Bars */
+progress {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 12px;
+  border: none;
+  border-radius: 10px;
+  background-color: #fff; /* Fallback */
+  overflow: hidden;       /* 1. Clips internal fill to the 10px rounded corners */
+}
+
+/* 2. Chrome, Safari, Edge Unfilled Track */
+progress::-webkit-progress-bar {
+  background-color: #fff !important;
+  border-radius: 10px;
+}
+
+/* 3. Firefox Unfilled Track */
+progress::-moz-progress-bar {
+  border-radius: 10px;
+}
+
+/* 4. Filled Bar Portion (Green) */
+progress::-webkit-progress-value {
+  background-color: #2ecc71;
+  border-radius: 10px; /* Keeps rounded ends as it fills */
+  transition: width 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+progress::-moz-progress-bar {
+    background-color: #2ecc71; 
+    border-radius: 10px;
+    transition: width 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Text Colors & Helper Classes */
+.text-white { color: #fff; }
+.text-blue { color: var(--blue-bg); }
+.text-green { color: var(--green-bg); }
+.text-bold { font-weight: bold; }
+.text-center { text-align: center; }
+
+/* Buttons */
+.action-btn {
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    background-color: var(--blue-bg);
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.action-btn:hover {
+    background-color: #001f52;
+    transform: translateY(-2px);
+}
+
+.resume-btn {
+    background-color: var(--green-bg);
+    color: var(--blue-bg);
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    width: fit-content;
+}
+
+.resume-btn:hover{
+    background-color: #2ecc71;
+    transform: translateY(-2px);
+}
+
+/* Landing Button */
+.btn {
+    background: var(--blue-bg);
+    position: relative;
+    border: 1px solid transparent;
+    cursor: pointer;
+    padding: 1em 4em;
+    border-radius: 100px;
+    overflow: hidden;
+    font-size: 21px;
+}
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn.active {
+    background: #000;
+    border: 1px solid white;
+}
+
+.btn.active span {
+    color: white;
+}
+
+.btn span {
+    font-size: 2em;
+    position: relative;
+    z-index: 200;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.btn canvas {
+    z-index: 100;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Social Icon Links */
+.social-links {
+    display: flex;
+    gap: 15px;
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+.social-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+.social-links a:hover {
+    transform: translateY(-3px);
+}
+
+a:link {
+    color: var(--white-bg);
+}
+
+a:hover {
+    color: var(--green-bg);
+}
+
+/* ==========================================================
+   MOBILE RESPONSIVE BREAKPOINT (<768px)
+========================================================== */
+@media (max-width: 768px) {
+    .section-padding, .section-intro {
+        padding: 40px 5vw;
+    }
+
+    .flex-end {
+        justify-content: flex-start;
+    }
+
+    .grid-two-col, .project-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .header-box {
+        max-width: 100%;
+    }
+
+    .btn {
+        padding: 0.8em 2.5em;
+    }
+
+    .btn span {
+        font-size: 1.4em;
+    }
+}

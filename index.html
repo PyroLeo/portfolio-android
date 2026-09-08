@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Youssef Hussein | Portfolio</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js" defer></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.1.0/uicons-brands/css/uicons-brands.css">
+    </head>
+    <body>
+        
+        <!-- Hero Section -->
+        <div class="whitebg section-hero">
+            <div class="box">
+                <button class="btn" id="toggle-scroll-btn" onclick="this.disabled=true">
+                    <span>Let's go</span>
+                    <canvas id="canvas"></canvas>
+                </button>
+            </div>
+        </div>
+
+        <!-- Next Section: Intro -->
+        <section id="next-section">
+            <div class="bluebg section-intro">
+                <div class="header-box border-blue">
+                    <h1 class="animation" style="color: var(--green-bg);">Youssef Hussein</h1>
+                    <h2 class="badge-title">Frontend Web Dev</h2>
+                </div>
+            </div>
+
+            <div class="greenbg section-intro flex-end">
+                <div class="header-box border-green">
+                    <p class="tag-label">ABOUT ME</p>
+                    <h3 class="about-text">Currently designing websites yet an aspiring game developer</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education & Experience -->
+        <div class="whitebg section-padding">
+            <h1 class="section-title">Education & Experience</h1>
+            <div class="grid-two-col">
+                <div class="header-box card-dark">
+                    <p class="text-white">2026</p>
+                    <p class="text-green text-bold">BACHELOR OF <br> COMPUTER SCIENCE - <br> SOFTWARE ENGINEERING MAJOR</p>
+                    <p class="text-white">Suez Canal University</p>
+                </div>
+                <div class="header-box card-dark">
+                    <p class="text-white">2026</p>
+                    <p class="text-green text-bold">INTERN FRONTEND <br> WEB DEVELOPER</p>
+                    <p class="text-white">Trans Business for Trading <br> and Distribution</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="bluebg section-padding text-white">
+            <p class="tag-label">WHAT I CAN DO</p>
+            <h1 class="main-heading">Skills & <br> Proficiencies</h1>
+            <div class="skills-container">
+                <div class="skill-item">
+                    <p>Problem Solving</p>
+                    <progress class="animated-progress" max="100" value="0" data-target="90"></progress>
+                </div>
+                <div class="skill-item">
+                    <p>Office Suite</p>
+                    <progress class="animated-progress" max="100" value="0" data-target="85"></progress>
+                </div>
+                <div class="skill-item">
+                    <p>Android Development</p>
+                    <progress class="animated-progress" max="100" value="0" data-target="70"></progress>
+                </div>
+                <div class="skill-item">
+                    <p>Programming Skills</p>
+                    <progress class="animated-progress" max="100" value="0" data-target="65"></progress>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 1: Solar System -->
+        <div class="greenbg section-padding">
+            <div class="project-grid">
+                <div class="header-box card-white">
+                    <div class="img-container">
+                        <img src="imgs/solarsystem.png" alt="solar system website image">
+                    </div>
+                    <h4 class="animation text-center">SOLAR SYSTEM</h4>
+                    <p class="text-center">2022</p>
+                </div>
+                <div class="header-box border-green align-self-center">
+                    <h4 class="text-blue">This is a website I made for a college project where it shows us the solar system and lets you read about each individual planet.</h4>
+                    <button class="action-btn" onclick="window.open('https://github.com/PyroLeo/solar-system', '_blank')">Click for the Github repository</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 2: Platformer Game -->
+        <div class="whitebg section-padding">
+            <div class="project-grid">
+                <div class="header-box card-green">
+                    <div class="img-container">
+                        <img src="imgs/godotplatformer.png" alt="platformer game">
+                    </div>
+                    <h4 class="animation text-center">PLATFORMER GAME</h4>
+                    <p class="text-center">2026</p>
+                </div>
+                <div class="header-box align-self-center">
+                    <h4 class="text-blue">This is a platformer game I made using Godot game engine. I got the help from a YouTube video by Brackeys.</h4>
+                    <button class="action-btn" onclick="window.open('', '_blank')">Click for the Github repository</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 3: React Capacitor -->
+        <div class="greenbg section-padding">
+            <div class="project-grid">
+                <div class="header-box card-white">
+                    <div class="img-container">
+                        <img src="imgs/capacitor.png" alt="capacitor android app">
+                    </div>
+                    <h4 class="animation text-center">React Capacitor App</h4>
+                    <p class="text-center">2026</p>
+                </div>
+                <div class="header-box border-green align-self-center">
+                    <h4 class="text-blue">This is a project I made as a test for the Capacitor plugin that turns websites into full-fledged mobile applications.</h4>
+                    <button class="action-btn" onclick="window.open('https://github.com/PyroLeo/my-react-app-android', '_blank')">Click for the Github repository</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reach Out / Footer -->
+        <div class="bluebg section-padding text-white">
+            <h1 class="animation main-heading">Reach out!</h1>
+            <div class="grid-two-col contact-grid">
+                <div class="header-box border-transparent">
+                    <h4 class="animation text-green">Youssef Hussein</h4>
+                    <p>youssefhussein463@gmail.com</p>
+                    <p>+201223451502</p>
+                    <a href="https://github.com/PyroLeo" target="_blank">https://github.com/PyroLeo</a>
+                </div>
+                <div class="header-box border-transparent">
+                    <h4>Connect with me</h4>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/invisible_indigo" target="_blank"><i class="fi fi-brands-instagram"></i></a>
+                        <a href="https://m.facebook.com/youssef.mohamed.ali.463/" target="_blank"><i class="fi fi-brands-facebook"></i></a>
+                        <a href="https://www.linkedin.com/in/youssef-hussein-ab4101237" target="_blank"><i class="fi fi-brands-linkedin"></i></a>
+                    </div>
+                    <button class="resume-btn">Find my resume here</button>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
