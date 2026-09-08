@@ -205,82 +205,82 @@ document.addEventListener('DOMContentLoaded', () => {
 document.querySelectorAll('.rating').forEach(rating => {
     let entries = Array.from(rating.querySelectorAll('li'));
 
+    // Set initial state: hide star graphics, show grey dots
+    entries.forEach(li => {
+        let star = li.querySelector('.star');
+        if (star) gsap.set(star, { scale: 0, y: 0, opacity: 1, filter: 'blur(0px)' });
+    });
+
     entries.forEach((entry, index) => {
         entry.addEventListener('click', e => {
             e.preventDefault();
 
-            // Due to flex-direction: row-reverse, index 0 is visual 5 (far right), 
-            // and index 4 is visual 1 (far left).
-            // Visual Stars <= clicked index should activate:
+            // Active visual stars (index >= clicked due to flex row-reverse)
             let active = entries.filter((el, i) => i >= index);
-            // Visual Stars > clicked index should deactivate:
             let inactive = entries.filter((el, i) => i < index);
 
-            // 1. BOUNCING ANIMATION (Activate / Raise Rating)
+            // 1. ACTIVATE / BOUNCE STARS
             if (active.length) {
-                // Reverse to animate in left-to-right natural reading order
                 let targets = active.slice().reverse();
 
                 gsap.killTweensOf(targets);
+                
+                // Clear active class from all, then re-add to clicked range
+                entries.forEach(el => el.classList.remove('active', 'activeColor'));
                 targets.forEach(el => el.classList.add('active', 'activeColor'));
 
-                gsap.set(targets, {
-                    '--star-scale': 0,
-                    '--star-y': 0,
-                    '--star-o': 1,
-                    '--star-blur': 0
+                let starContainers = targets.map(el => el.querySelector('.star'));
+
+                gsap.set(starContainers, { scale: 0, y: 0, opacity: 1, filter: 'blur(0px)' });
+
+                gsap.to(starContainers, {
+                    scale: 1,
+                    duration: 0.8,
+                    ease: 'elastic.out(1, 0.6)',
+                    stagger: 0.04
                 });
 
                 gsap.to(targets, {
-                    '--star-scale': 1,
                     '--dot-scale': 0,
-                    duration: 0.9,
-                    ease: 'elastic.out(1, 0.7)',
-                    stagger: 0.03
+                    duration: 0.2
                 });
             }
 
-            // 2. BREAK & DROP ANIMATION (Deactivate / Lower Rating)
+            // 2. DEACTIVATE / DROP INACTIVE STARS
             if (inactive.length) {
-                let targetsToDrop = inactive.filter(el => el.classList.contains('active'));
+                let starsToDrop = inactive.map(el => el.querySelector('.star'));
 
-                if (targetsToDrop.length) {
-                    gsap.killTweensOf(targetsToDrop);
+                gsap.killTweensOf(starsToDrop);
+                inactive.forEach(el => el.classList.remove('active', 'activeColor'));
 
-                    targetsToDrop.forEach(el => el.classList.remove('activeColor'));
+                // Shatter rotation
+                gsap.to(inactive, {
+                    '--star-before-r': -20,
+                    '--star-before-y': -8,
+                    '--star-after-r': 20,
+                    '--star-after-y': 8,
+                    duration: 0.3
+                });
 
-                    // Shatter pieces
-                    gsap.to(targetsToDrop, {
-                        '--star-before-r': -20,
-                        '--star-before-y': -8,
-                        '--star-after-r': 20,
-                        '--star-after-y': 8,
-                        duration: 0.65
-                    });
-
-                    // Fall down & fade out
-                    gsap.to(targetsToDrop, {
-                        '--star-o': 0,
-                        '--star-blur': 10,
-                        '--star-y': 48,
-                        '--dot-scale': 0.8,
-                        duration: 0.5,
-                        delay: 0.15,
-                        onComplete() {
-                            targetsToDrop.forEach(el => el.classList.remove('active'));
-                            gsap.set(targetsToDrop, {
+                // Fall down and disappear
+                gsap.to(starsToDrop, {
+                    y: 40,
+                    opacity: 0,
+                    filter: 'blur(8px)',
+                    duration: 0.4,
+                    onComplete() {
+                        inactive.forEach(el => {
+                            gsap.set(el, {
                                 '--star-before-r': 0,
                                 '--star-before-y': 0,
                                 '--star-after-r': 0,
                                 '--star-after-y': 0,
-                                '--star-scale': 0,
-                                '--star-y': 0,
-                                '--star-o': 1,
-                                '--star-blur': 0
+                                '--dot-scale': 0.8
                             });
-                        }
-                    });
-                }
+                        });
+                        gsap.set(starsToDrop, { scale: 0, y: 0, opacity: 1, filter: 'blur(0px)' });
+                    }
+                });
             }
         });
     });
