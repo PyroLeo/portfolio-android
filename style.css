@@ -285,7 +285,7 @@ progress::-moz-progress-bar {
 
 .btn {
     background: var(--blue-bg);
-    position: relative;
+    position: fixed;
     border: 1px solid transparent;
     cursor: pointer;
     padding: 1em 4em;
@@ -293,13 +293,23 @@ progress::-moz-progress-bar {
     overflow: hidden;
     font-size: 21px;
 }
+
 .btn:hover {
     transform: translateY(-2px);
 }
 
 .btn.active {
     background: #000;
-    border: 1px solid white;
+    animation: spinButton 0.8s linear;
+}
+
+@keyframes spinButton {
+    from {
+        transform: translateY(0px) rotate(0deg);
+    }
+    to {
+        transform: translateY(-1000px) rotate(720deg);
+    }
 }
 
 .btn.active span {

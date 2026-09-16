@@ -177,7 +177,7 @@ if (scrollBtn) {
                     heroSection.classList.add('is-hidden');
                 }
                 window.scrollTo(0, 0);
-            }, 800);
+            }, 400);
         });
     });
 }
