@@ -31,36 +31,71 @@ for (let i = 0; i < animateText.length; i++) {
     };
 }
 
-const animateNumb = document.getElementsByClassName("numanimation");
-const numbers = "1234567890";
+// const animateNumb = document.getElementsByClassName("typewriter");
+// const numbers = "";
 
-for (let i = 0; i < animateNumb.length; i++) {
-    const text = animateNumb[i];
-    const oldText = text.innerText;
-    let busy = false;
+// for (let i = 0; i < animateNumb.length; i++) {
+//     const text = animateNumb[i];
+//     const oldText = text.innerText;
+//     let busy = false;
 
-    text.onpointerover = ev => {
-        if (busy) return;
+//     text.onpointerover = ev => {
+//         if (busy) return;
 
-        let iterations = 0;
-        busy = true;
-        const interval = setInterval(() => {
-            ev.target.innerText = oldText.split("")
-                .map((letter, index) => {
-                    if (index < iterations) {
-                        return oldText[index];
-                    }
-                    return numbers[Math.floor(Math.random() * 10)];
-                })
-                .join("");
+//         let iterations = 0;
+//         busy = true;
+//         const interval = setInterval(() => {
+//             ev.target.innerText = oldText.split("")
+//                 .map((letter, index) => {
+//                     if (index < iterations) {
+//                         return oldText[index];
+//                     }
+//                     return numbers[Math.floor(Math.random() * 10)];
+//                 })
+//                 .join("");
 
-            if (iterations >= oldText.length) {
-                busy = false;
-                clearInterval(interval);
-            }
-            iterations += 1 / 15;
-        }, 30);
-    };
+//             if (iterations >= oldText.length) {
+//                 busy = false;
+//                 clearInterval(interval);
+//             }
+//             iterations += 1 / 2;
+//         }, 30);
+//     };
+// }
+
+const revealText = document.getElementsByClassName("typewriter");
+const ltrs = "";
+
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const text = entry.target;
+            const oldText = text.dataset.oldText || text.innerText;
+            text.dataset.oldText = oldText;
+
+            let iterations = 0;
+            const interval = setInterval(() => {
+                text.innerText = oldText.split("")
+                    .map((letter, index) => {
+                        if (index < iterations) {
+                            return oldText[index];
+                        }
+                        return ltrs[Math.floor(Math.random() * ltrs.lenght)];
+                    })
+                    .join("");
+
+                if (iterations >= oldText.length) {
+                    clearInterval(interval);
+                }
+                iterations += 1;
+            }, 30);
+            observer.unobserve(text)
+        }
+    });
+}, { threshold: 0.2});
+
+for (let i = 0; i < revealText.length; i++) {
+    observer.observe(revealText[i]);
 }
 
 // 2. Canvas Particle Background
