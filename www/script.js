@@ -1,6 +1,6 @@
 // 1. Text Animation
-const animateText = document.getElementsByClassName("animation");
-const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+const animateText = document.getElementsByClassName("alphaanimation");
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
 for (let i = 0; i < animateText.length; i++) {
     const text = animateText[i];
@@ -18,7 +18,7 @@ for (let i = 0; i < animateText.length; i++) {
                     if (index < iterations) {
                         return oldText[index];
                     }
-                    return letters[Math.floor(Math.random() * 62)];
+                    return letters[Math.floor(Math.random() * 52)];
                 })
                 .join("");
 
@@ -27,6 +27,38 @@ for (let i = 0; i < animateText.length; i++) {
                 clearInterval(interval);
             }
             iterations += 1 / 3;
+        }, 30);
+    };
+}
+
+const animateNumb = document.getElementsByClassName("numanimation");
+const numbers = "1234567890";
+
+for (let i = 0; i < animateNumb.length; i++) {
+    const text = animateNumb[i];
+    const oldText = text.innerText;
+    let busy = false;
+
+    text.onpointerover = ev => {
+        if (busy) return;
+
+        let iterations = 0;
+        busy = true;
+        const interval = setInterval(() => {
+            ev.target.innerText = oldText.split("")
+                .map((letter, index) => {
+                    if (index < iterations) {
+                        return oldText[index];
+                    }
+                    return numbers[Math.floor(Math.random() * 10)];
+                })
+                .join("");
+
+            if (iterations >= oldText.length) {
+                busy = false;
+                clearInterval(interval);
+            }
+            iterations += 1 / 15;
         }, 30);
     };
 }
