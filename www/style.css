@@ -352,11 +352,6 @@ progress::-moz-progress-bar {
 .social-links a {
     color: #fff;
     text-decoration: none;
-    transition: transform 0.2s ease;
-}
-
-.social-links a:hover {
-    transform: translateY(-3px);
 }
 
 a:link {
@@ -477,6 +472,50 @@ html {
   -webkit-font-smoothing: antialiased;
 }
 
+.insta{
+    animation: instahover 10s infinite ease-in-out;
+}
+
+@keyframes instahover {
+    0%{ transform: translateY(0px);}
+    24%{transform: translateY(0px);}
+    25%{ transform: translateY(-3px);}
+    26%{transform: translateY(-2px);}
+    27%{transform: translateY(0px);}
+    28%{transform: translateY(-1px);}
+    29%{transform: translateY(0px);}
+    100%{transform: translateY(0px);}
+}
+
+.faceb{
+    animation: facebhover 10s infinite ease-in-out;
+}
+
+@keyframes facebhover {
+    0%{ transform: translateY(0px);}
+    29%{transform: translateY(0px);}
+    30%{ transform: translateY(-3px);}
+    31%{transform: translateY(-2px);}
+    32%{transform: translateY(0px);}
+    33%{transform: translateY(-1px);}
+    34%{transform: translateY(0px);}
+    100%{transform: translateY(0px);}
+}
+
+.linked{
+    animation: linkedhover 10s infinite ease-in-out;
+}
+
+@keyframes linkedhover {
+    0%{ transform: translateY(0px);}
+    34%{transform: translateY(0px);}
+    35%{ transform: translateY(-3px);}
+    36%{transform: translateY(-2px);}
+    37%{transform: translateY(0px);}
+    38%{transform: translateY(-1px);}
+    39%{transform: translateY(0px);}
+    100%{transform: translateY(0px);}
+}
 
 @media (max-width: 768px) {
     .ratingindiv {
