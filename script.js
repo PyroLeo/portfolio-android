@@ -211,8 +211,7 @@ if (scrollBtn) {
                 if (heroSection) {
                     heroSection.classList.add('is-hidden');
                 }
-                window.scrollTo(0, 0);
-            }, 400);
+            }, 3000);
         });
     });
 }

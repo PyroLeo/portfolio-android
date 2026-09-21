@@ -300,16 +300,19 @@ progress::-moz-progress-bar {
 
 .btn.active {
     background: #000;
-    animation: spinButton 0.8s linear;
+    animation: spinButton 5s linear;
 }
 
 @keyframes spinButton {
-    from {
-        transform: translateY(0px) rotate(0deg);
-    }
-    to {
-        transform: translateY(-1000px) rotate(720deg);
-    }
+    0% { transform: translateY(0px) rotate(0deg);}
+    20% { transform: translateY(-1000px) rotate(720deg);}
+    21% { transform: translateY(-1000px) rotate(0deg);}
+    25% { transform: translateY(-400px);}
+    40% { transform: translateY(-250px);}
+    45% { transform: translateY(-250px);}
+    60% { transform: translateY(-400px);}
+    100% { transform: translateY(-500px);}
+
 }
 
 .btn.active span {
