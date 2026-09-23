@@ -55,7 +55,7 @@ const observer = new IntersectionObserver((entries, observer) => {
                 if (iterations >= oldText.length) {
                     clearInterval(interval);
                 }
-                iterations += 1;
+                iterations += 2;
             }, 30);
             observer.unobserve(text)
         }
