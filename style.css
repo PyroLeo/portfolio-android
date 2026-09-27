@@ -520,6 +520,10 @@ html {
     100%{transform: translateY(0px);}
 }
 
+.alphaanimation {
+    text-wrap: nowrap;
+}
+
 @media (max-width: 768px) {
     .ratingindiv {
         display: flex;
