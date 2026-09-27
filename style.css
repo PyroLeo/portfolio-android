@@ -521,7 +521,7 @@ html {
 }
 
 .alphaanimation {
-    text-wrap: nowrap;
+    display: inline;
 }
 
 @media (max-width: 768px) {
@@ -529,6 +529,10 @@ html {
         display: flex;
         justify-content: center;
         margin-left: 0px;
+    }
+
+    .alphaanimation {
+        display: block;
     }
 
     .section-padding, .section-intro {

@@ -15,9 +15,17 @@ for (let i = 0; i < animateText.length; i++) {
         const interval = setInterval(() => {
             ev.target.innerText = oldText.split("")
                 .map((letter, index) => {
+                    // Keep original character if scrambled past iteration threshold
                     if (index < iterations) {
                         return oldText[index];
                     }
+                    
+                    // PRESERVE SPACES & NEWLINES: Don't randomize spaces or punctuation
+                    if (oldText[index] === " " || oldText[index] === "\n") {
+                        return oldText[index];
+                    }
+
+                    // Otherwise, pick a random letter
                     return letters[Math.floor(Math.random() * 52)];
                 })
                 .join("");
